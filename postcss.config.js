@@ -1,20 +1,11 @@
-const tailwindcss = require("tailwindcss");
-
-const purgecss = require("@fullhuman/postcss-purgecss")({
-  content: ["./src/**/*.svelte", "./public/**/*.html"],
-  defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || []
-});
-
-const nanocss = require('cssnano')({
-  preset: 'default',
-});
+const tailwindcss = require('tailwindcss');
 
 module.exports = {
   plugins: [
-    tailwindcss("./tailwind.js"),
+    tailwindcss('./tailwind.config.js'),
     require('autoprefixer'),
-
-    ...(process.env.NODE_ENV === "production" ? [purgecss] : []),
-    ...(process.env.NODE_ENV === "production" ? [nanocss] : [])
-  ]
+    require('cssnano')({
+      preset: 'default',
+    }),
+  ],
 };
