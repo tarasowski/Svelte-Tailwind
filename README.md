@@ -51,22 +51,20 @@ netx, import Tailwind styles in `src/App.svelte` :
 
 ```svelte
 <script>
-	export let name;
+  export let name;
 </script>
 
 <style global>
-	@import 'tailwindcss/base';
+  @import 'tailwindcss/base';
 
-	@import 'tailwindcss/components';
+  @import 'tailwindcss/components';
 
-	@import 'tailwindcss/utilities';
+  @import 'tailwindcss/utilities';
 </style>
 
 <main>
-	<h1>Hello {name}!</h1>
-	<p>
-    	Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.
-	</p>
+  <h1>Hello {name}!</h1>
+  <p> Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
 </main>
 ```
 
