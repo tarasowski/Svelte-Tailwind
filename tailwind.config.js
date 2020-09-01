@@ -1,8 +1,10 @@
 module.exports = {
+  future: {
+    removeDeprecatedGapUtilities: true,
+  },
   purge: {
-    enabled: !process.env.ROLLUP_WATCH,
-    mode: 'all',
-    content: ['./public/*.html', './src/**/*.svelte'],
+    enabled: true,
+    content: ['./src/**/*.svelte'],
   },
   theme: {
     extend: {},
