@@ -34,8 +34,8 @@ export default {
       css: css => {
         css.write('bundle.css');
       },
+      // from here
       preprocess: sveltePreprocess({
-        // from here
         postcss: {
           plugins: [require('tailwindcss'), require('autoprefixer')],
         },
@@ -68,12 +68,18 @@ netx, import Tailwind styles in `src/App.svelte` :
 </main>
 ```
 
-Finally, enable purge in `tailwind.config.js`:
+Finally, configure purge in `tailwind.config.js`:
 
 ```js
+const production = !process.env.ROLLUP_WATCH;
+
 module.exports = {
+  future: {
+    // removeDeprecatedGapUtilities: true,
+    // purgeLayersByDefault: true,
+  },
   purge: {
-    enabled: true,
+    enabled: production,
     content: ['./src/**/*.svelte'],
   },
   theme: {
