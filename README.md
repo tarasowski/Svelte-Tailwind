@@ -30,16 +30,15 @@ export default {
   // ...
   plugins: [
     svelte({
-      dev: !production,
-      css: css => {
-        css.write('bundle.css');
+      compilerOptions: {
+        // enable run-time checks when not in production
+        dev: !production,
       },
-      // from here
       preprocess: sveltePreprocess({
         postcss: {
           plugins: [require('tailwindcss'), require('autoprefixer')],
         },
-      }), // up to this point
+      }),
     }),
     // ...
   ],
@@ -71,39 +70,41 @@ netx, import Tailwind styles in `src/App.svelte` :
 Finally, configure purge in `tailwind.config.js`:
 
 ```js
-const production = !process.env.ROLLUP_WATCH;
-
 module.exports = {
-  future: {
-    // removeDeprecatedGapUtilities: true,
-    // purgeLayersByDefault: true,
-  },
   purge: {
-    enabled: production,
+    enabled: true,
     content: ['./src/**/*.svelte'],
   },
+  darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {},
   },
-  variants: {},
+  variants: {
+    extend: {},
+  },
   plugins: [],
 };
 ```
 
-## Project setup
+*- Changes can take up to 5 seconds to be reflected in the browser -*
 
-```
+## Get started
+
+Install the dependencies...
+
+```bash
+cd Svelte-Tailwind
 npm install
 ```
 
-### Compiles and hot-reloads for development
+...then start [Rollup](https://rollupjs.org):
 
-```
+```bash
 npm run dev
 ```
 
-### Compiles and minifies for production
+## Building and running in production mode
 
-```
+```bash
 npm run build
 ```
