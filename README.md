@@ -14,7 +14,7 @@ Create your Tailwind config file
 npx tailwindcss init
 ```
 
-configure **svelte-preprocess** in `rollup.config.js`
+Configure **svelte-preprocess** in `rollup.config.js`
 
 ```js
 import svelte from 'rollup-plugin-svelte';
@@ -46,7 +46,7 @@ export default {
 };
 ```
 
-netx, import Tailwind styles in `src/App.svelte` :
+Next, import Tailwind styles in `src/App.svelte` :
 
 ```svelte
 <script>
